@@ -1,3 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+<style>
+body
+    {
+        background-color: rgba(201, 76, 76, 0.16);
+    }
+
+</style>
+</head>
+<body>
+
 <?php
 if(isset($_POST['submit'])){
     $from = $_POST['from'];
@@ -23,7 +38,18 @@ if(isset($_POST['submit'])){
     $status = $x = mail($to, $subject, $body, $header);
     
     if($status==1){
-        echo "Mail sent Successfully";
+        echo "<h2>Mail sent Successfully</h2>";
+        echo "<h4>From:$from</h4>";
+        echo "<h4>To:$to</h4>";
+        echo "<h4>CC:";
+        echo json_encode($cc_array)."</h4>";
+
+        echo "<h4>CC:";
+        echo json_encode($bcc_array)."</h4>";
+        echo "<h4>Subject: $subject</h4>";
+        echo "<h4>Body: $body</h4>";
+
+        
     }
     
     else {
@@ -34,3 +60,6 @@ if(isset($_POST['submit'])){
 }
 
 ?>
+
+</body>
+</html>
